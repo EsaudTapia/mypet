@@ -1,0 +1,147 @@
+<div class="container-fluid">
+    <div class="row mt-3 mb-3">
+        <div class="col-sm-6">
+
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title float-left mr-5"> Busquedas de Compras</h4>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title float-left mr-5">Proveedor</h4>
+                        <div class="btn-group float-left">
+                            <div class="card-pt-2 pl-2" style="border-color: #533f03"></div>
+                            <input id="txtBProveedor" type="text" class="" placeholder="Buscar por Nombre"/>
+                            <button id="btnBProveedor" class="btn btn-sm btn-outline-dark mr-5" onclick="buscarProveedor();"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <td>#</td>
+                                    <td>Nombre</td>
+                                    <td>Telefono</td>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyProveedores"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title float-left mr-5">Empleados</h4>
+                        <div class="btn-group float-left">
+                            <div class="card-pt-2 pl-2" style="border-color: #533f03"></div>
+                            <input id="txtBEmpleado" type="text" class="" placeholder="Buscar por Nombre"/>
+                            <button id="txtBEmpleado" class="btn btn-sm btn-outline-dark mr-5" onclick="buscarEmpleados();"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <td>#</td>
+                                    <td>Nombre</td>
+                                    <td>Correo</td>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyempleados"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title float-left mr-5">Mercancia</h4>
+                        <div class="btn-group float-left">
+                            <div class="card-pt-2 pl-2" style="border-color: #533f03"></div>
+                            <input id="txtBMercancia" type="text" class="" placeholder="Buscar por Nombre"/>
+                            <button id="txtBMercancia" class="btn btn-sm btn-outline-dark mr-5" onclick="buscarMercancias();"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <td>#</td>
+                                    <td>Nombre</td>
+                                    <td>Precio</td>
+                                    <td>Descripcion</td>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodymercancias"></tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title float-left mr-5">Mascota</h4>
+                        <div class="btn-group float-left">
+                            <div class="card-pt-2 pl-2" style="border-color: #533f03"></div>
+                            <input id="txtBMascota" type="text" class="" placeholder="Buscar por Nombre"/>
+                            <button id="txtBMascota" class="btn btn-sm btn-outline-dark mr-5" onclick="buscarMascotas();"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <td>#</td>
+                                    <td>Nombre</td>
+                                    <td>Precio</td>
+                                    <td>Especie</td>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyMascotas"></tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title float-left mr-5"><i class="fa fa-shopping-cart text-success"></i> Generar compra</h4>
+                </div>
+            </div>
+            <div class="card-body">
+                <label for="txtEmpleadoElegido" >Empleado:</label>
+                <input type="text" id="txtEmpleadoElegido" readonly>
+            </div>
+            
+            <div class="card-body">
+                <label for="txtProveedorElegido" >Proveedor</label>
+                <input type="text" id="txtProveedorElegido" readonly>
+            </div>
+            
+            <div class="card-body" id="txtMercanciaElegida">
+                
+            </div>
+            
+            <div class="card-body" id="txtMascotaElegida">
+                
+            </div>
+            
+            <div class="card-body" >
+                <h3 class="font-weight-bold text-success" id="txtTotalVenta"></h3>                
+            </div>
+            
+             <div class="card-body" >
+                 <button onclick="obtenerTotal();" class="btn btn-success mx-4"><i class="fa fa-calculator"></i></button>
+                 <button onclick="generarCompra();" class="btn btn-success mx-4"><i class="fa fa-save"></i></button>        
+            </div>
+        </div>
+        
+    </div>
+</div>
+<script type="text/javascript" src="style/js/script modulos/compra.js"></script>

@@ -1,0 +1,190 @@
+<div class="container-fluid">
+    <div class="row mt-3 mb-3">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title float-left mr-5">Animales</h4>
+                     <div class="btn-group float-left">
+                       <label for="txtbuscar" class=" text-dark text-center form-text m mt-2 mr-1">Buscar:</label>
+                       <input id="txtbuscar" type="text" class="" placeholder="Buscar por Especie" />
+                       <button id="btnbuscar" class="btn btn-sm btn-outline-dark mr-5" onclick="searchAni();"><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="btn-group float-right">
+                        <label for="selectFiltro" class="text-dark text-center form-text mt-2 mr-1">Filtrar por estatus:</label>
+                        <select id="selectFiltro" class="form-inline">
+                            <option value="0">Todos</option>
+                            <option value="2">Activo</option>
+                            <option value="1">Inactivo</option>
+                        </select>
+                        <button id="btnFiltro" class="btn btn-sm btn-outline-dark mr-5" onclick="filtrarAnimal();"><i class="fa fa-filter"></i></button>
+                        <button id="btnAdd" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" disabled><i class="fa fa-plus"></i> Agregar</button>
+                        <button class="btn btn-primary" onclick="imprimir('tblAnimales');"><i class="fa fa-sync-alt fa-spin"></i> Imprimir</button>
+                    </div>
+                </div>
+                <div id="tblAnimales" class="card-body p-0 m-0">
+                    <table class="table table-responsive table-hover m-0">
+                        <thead class="bg-dark text-light">
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Foto</th>
+                                <th scope="col">Raza</th>
+                                <th scope="col">Especie</th>
+                                <th scope="col">FechaNacimiento</th>
+                                <th scope="col">FechaLlegada</th>
+                                <th scope="col">Precio Compra</th>
+                                <th scope="col">Precio Venta</th>
+                                <th scope="col">Existencias</th>
+                                <th scope="col">Estatus</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyAnimales" class="bg-white">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-success w-100 text-center" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="detalleForm" class="card-body">
+                    <div class="form">
+                        <form>
+                            <div class="form">
+                                <div class="form-group">
+                                    <label class="text-dark" for="txtCodigoInterno">idAnimal</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text text-warning"><i class="fas fa-key"></i></span>
+                                        </div>
+                                        <input id="txtCodigoInterno" type="text" class="form-control" disabled/>
+                                    </div>
+                                </div>                                                                
+                                <div class="form-group">
+                                    <label class="text-dark" for="txtCodigoProducto">idProducto</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text text-info"><i class="fas fa-key"></i></span>
+                                        </div>
+                                        <input id="txtCodigoProducto" type="text" class="form-control" disabled/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="text-dark" for="txtNombre">Nombre</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-archive"></i></span>
+                                        </div>
+                                        <input id="txtNombre" type="text" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="text-dark" for="txtRaza">Raza</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-paw"></i></span>
+                                        </div>
+                                        <input id="txtRaza" type="text" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="text-dark" for="txtEspecie">Especie</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-paw"></i></span>
+                                        </div>
+                                        <input id="txtEspecie" type="text" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="text-dark" for="txtFechaNac">Fecha de nacimiento</label>
+                                    <input id="txtFechaNac" type="date" class="form-control" required/>
+                                </div>
+                                <div class="form-group">
+                                    <label class="text-dark" for="txtFechaLlegada">Fecha de llegada</label>
+                                    <input id="txtFechaLlegada" type="date" class="form-control" required/>
+                                </div>
+                                <div class="form-group">
+                                    <label class="text-dark" for="txtPrecioCompra">Precio Compra</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-dollar-sign"></i></span>
+                                        </div>
+                                        <input id="txtPrecioCompra" type="number" class="form-control" onkeyup="calcularPrecioVenta();"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="text-dark" for="txtPrecioVenta">Precio venta</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-dollar-sign"></i></span>
+                                        </div>
+                                        <input id="txtPrecioVenta" type="number" class="form-control" disabled/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="text-dark" for="txtExistencias">Existencias</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-cubes"></i></span>
+                                        </div>
+                                        <input id="txtExistencias" type="number" min="0" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <div class="btn btn-mdb-color btn-rounded float-left">
+                                        <label>Seleccione imagen del producto:</label>
+                                        <div class=" " > 
+                                            <div  class="card ">
+                                                <div class="card border-dark">
+
+                                                    <div  class="card-header  bg-success text-white">                            
+                                                        <h4 id="pasos" class="text-center" >Imagen del producto </h4>                              
+                                                    </div>
+                                                    <div id="dtscliente" class="card-body">
+                                                        <span id="descImg">
+                                                            sin imagen
+                                                            <br>
+                                                            <i class="fas fa-image"></i>
+                                                        </span>
+                                                        <img id="espacioimg" style="width: 100%;"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <input id="fileImage"
+                                               type="file" 
+                                               accept="image/png"
+                                               onchange="cargarFotografia(this);"/>
+                                        <input id="txtBase64" type="text" class="form-control" hidden>
+                                    </div>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="chkAnimalActivo">
+                                    <label class="form-check-label text-dark" for="chkAnimalActivo">Activo</label>
+                                </div>
+                                <input type="submit" hidden/>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-danger"  data-dismiss="modal">Cerrar</button>
+                        <button id="btnAddAnimal" type="button" class="btn btn-primary" data-dismiss="modal" onclick="confirmarNuevoAnimal();">Guardar</button>
+                        <button id="btnEditAnimal" type="button" class="btn btn-primary" data-dismiss="modal" onclick="guardarEditAnimal();">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="style/js/script modulos/animales.js"></script>
